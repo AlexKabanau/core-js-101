@@ -28,8 +28,18 @@
  *      .catch((error) => console.log(error.message)) // 'Error: Wrong parameter is passed!
  *                                                    //  Ask her again.';
  */
-function willYouMarryMe(/* isPositiveAnswer */) {
-  throw new Error('Not implemented');
+function willYouMarryMe(isPositiveAnswer) {
+  // throw new Error('Not implemented');
+  return new Promise((response, reject) => {
+    if (isPositiveAnswer === true) {
+      response('Hooray!!! She said "Yes"!');
+    }
+    if (isPositiveAnswer === false) {
+      response('Oh no, she said "No".');
+    } else {
+      reject(new Error('Wrong parameter is passed! Ask her again.'));
+    }
+  });
 }
 
 
@@ -48,8 +58,9 @@ function willYouMarryMe(/* isPositiveAnswer */) {
  *    })
  *
  */
-function processAllPromises(/* array */) {
-  throw new Error('Not implemented');
+function processAllPromises(array) {
+  // throw new Error('Not implemented');
+  return Promise.all(array).then((res) => res);
 }
 
 /**
@@ -71,8 +82,9 @@ function processAllPromises(/* array */) {
  *    })
  *
  */
-function getFastestPromise(/* array */) {
-  throw new Error('Not implemented');
+function getFastestPromise(array) {
+  // throw new Error('Not implemented');
+  return Promise.race(array).then((res) => res);
 }
 
 /**
@@ -94,6 +106,14 @@ function getFastestPromise(/* array */) {
  */
 function chainPromises(/* array, action */) {
   throw new Error('Not implemented');
+  // const arr = [];
+  // return new Promise((resolve) => {
+  //   // eslint-disable-next-line no-restricted-syntax, guard-for-in
+  //   for (const item of array) {
+  //     item.then((res) => arr.push(res));
+  //   }
+  //   resolve(arr);
+  // }).then(() => arr.reduce(action));
 }
 
 module.exports = {
