@@ -104,16 +104,16 @@ function getFastestPromise(array) {
  *    });
  *
  */
-function chainPromises(/* array, action */) {
-  throw new Error('Not implemented');
-  // const arr = [];
-  // return new Promise((resolve) => {
-  //   // eslint-disable-next-line no-restricted-syntax, guard-for-in
-  //   for (const item of array) {
-  //     item.then((res) => arr.push(res));
-  //   }
-  //   resolve(arr);
-  // }).then(() => arr.reduce(action));
+function chainPromises(array, action) {
+  // throw new Error('Not implemented');
+  const arr = [];
+  return new Promise((resolve) => {
+    // eslint-disable-next-line no-restricted-syntax, guard-for-in
+    for (const item of array) {
+      item.then((res) => arr.push(res));
+    }
+    resolve(arr);
+  }).then(() => arr.reduce(action));
 }
 
 module.exports = {
